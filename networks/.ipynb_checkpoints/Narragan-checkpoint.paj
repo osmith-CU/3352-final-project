@@ -4,44 +4,6 @@
 % structure of three U.S. Mid-Atlantic estuaries.  Mar. Ecol. Prog. Ser.
 % 161:239-254.
 % transformed from SCOR format by Scor2net 14.7.2003
-*partition ECO types / Narragansett
-*vertices 35
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-2
-3
-4
-5
-
 *network Narragansett
 *vertices 35
    1 "Bluefish"
@@ -300,42 +262,3 @@
   32  27 400000.00000
   32  28  80000.00000
   32  29 747600.00000
-
-*vector bio-masses / Narragansett
-*vertices 35
-   251.00
-   141.00
-   149.00
-    31.00
-   160.00
-   151.00
-    84.00
-   130.00
-    44.00
-   184.00
-   145.00
-    40.00
-   135.00
-   200.00
-   300.00
-   393.00
-   120.00
-   244.00
-  4460.00
-  1140.00
-  1400.00
-   106.00
-    16.70
-  1510.45
-   362.00
-    90.00
-  1000.00
-   200.00
-   600.00
-   330.00
-  3800.00
-253400.00
-     0.00
-     0.00
-     0.00
-

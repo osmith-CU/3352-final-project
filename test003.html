@@ -1,0 +1,108 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 2000px;
+            height: 2000px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": "Pseudotolithus", "label": "Pseudotolithus", "shape": "dot", "size": 10}, {"id": "Ariidae", "label": "Ariidae", "shape": "dot", "size": 10}, {"id": "Condrichtis", "label": "Condrichtis", "shape": "dot", "size": 10}, {"id": "Dentex", "label": "Dentex", "shape": "dot", "size": 10}, {"id": "Macrobenthos", "label": "Macrobenthos", "shape": "dot", "size": 10}, {"id": "Merluccius", "label": "Merluccius", "shape": "dot", "size": 10}, {"id": "Parapenaeus longirostris", "label": "Parapenaeus longirostris", "shape": "dot", "size": 10}, {"id": "Polynemidae", "label": "Polynemidae", "shape": "dot", "size": 10}, {"id": "Sardinella", "label": "Sardinella", "shape": "dot", "size": 10}, {"id": "Cephalopodes", "label": "Cephalopodes", "shape": "dot", "size": 10}, {"id": "Large Zoo", "label": "Large Zoo", "shape": "dot", "size": 10}, {"id": "Marine birds", "label": "Marine birds", "shape": "dot", "size": 10}, {"id": "Marine mammals", "label": "Marine mammals", "shape": "dot", "size": 10}, {"id": "Penaeus", "label": "Penaeus", "shape": "dot", "size": 10}, {"id": "Sciaenidae", "label": "Sciaenidae", "shape": "dot", "size": 10}, {"id": "Aristeu varidens", "label": "Aristeu varidens", "shape": "dot", "size": 10}, {"id": "Haemulidae", "label": "Haemulidae", "shape": "dot", "size": 10}, {"id": "Demersal fish", "label": "Demersal fish", "shape": "dot", "size": 10}, {"id": "Large pelagics", "label": "Large pelagics", "shape": "dot", "size": 10}, {"id": "Serranidae", "label": "Serranidae", "shape": "dot", "size": 10}, {"id": "Small pelagics", "label": "Small pelagics", "shape": "dot", "size": 10}, {"id": "Miscelaneous", "label": "Miscelaneous", "shape": "dot", "size": 10}, {"id": "Middlebenthos", "label": "Middlebenthos", "shape": "dot", "size": 10}, {"id": "Mesopelagics", "label": "Mesopelagics", "shape": "dot", "size": 10}, {"id": "Small Zoo", "label": "Small Zoo", "shape": "dot", "size": 10}, {"id": "Trachurus", "label": "Trachurus", "shape": "dot", "size": 10}]);
+        edges = new vis.DataSet([{"arrows": "to", "from": "Pseudotolithus", "label": "", "to": "Ariidae", "weight": 1}, {"arrows": "to", "from": "Pseudotolithus", "label": "", "to": "Condrichtis", "weight": 1}, {"arrows": "to", "from": "Pseudotolithus", "label": "", "to": "Dentex", "weight": 1}, {"arrows": "to", "from": "Pseudotolithus", "label": "", "to": "Macrobenthos", "weight": 1}, {"arrows": "to", "from": "Pseudotolithus", "label": "", "to": "Merluccius", "weight": 1}, {"arrows": "to", "from": "Pseudotolithus", "label": "", "to": "Parapenaeus longirostris", "weight": 1}, {"arrows": "to", "from": "Pseudotolithus", "label": "", "to": "Polynemidae", "weight": 1}, {"arrows": "to", "from": "Pseudotolithus", "label": "", "to": "Sardinella", "weight": 1}, {"arrows": "to", "from": "Ariidae", "label": "", "to": "Cephalopodes", "weight": 1}, {"arrows": "to", "from": "Ariidae", "label": "", "to": "Large Zoo", "weight": 1}, {"arrows": "to", "from": "Ariidae", "label": "", "to": "Marine birds", "weight": 1}, {"arrows": "to", "from": "Ariidae", "label": "", "to": "Marine mammals", "weight": 1}, {"arrows": "to", "from": "Ariidae", "label": "", "to": "Merluccius", "weight": 1}, {"arrows": "to", "from": "Ariidae", "label": "", "to": "Penaeus", "weight": 1}, {"arrows": "to", "from": "Ariidae", "label": "", "to": "Polynemidae", "weight": 1}, {"arrows": "to", "from": "Ariidae", "label": "", "to": "Sciaenidae", "weight": 1}, {"arrows": "to", "from": "Condrichtis", "label": "", "to": "Aristeu varidens", "weight": 1}, {"arrows": "to", "from": "Condrichtis", "label": "", "to": "Cephalopodes", "weight": 1}, {"arrows": "to", "from": "Condrichtis", "label": "", "to": "Haemulidae", "weight": 1}, {"arrows": "to", "from": "Condrichtis", "label": "", "to": "Macrobenthos", "weight": 1}, {"arrows": "to", "from": "Condrichtis", "label": "", "to": "Marine birds", "weight": 1}, {"arrows": "to", "from": "Condrichtis", "label": "", "to": "Merluccius", "weight": 1}, {"arrows": "to", "from": "Aristeu varidens", "label": "", "to": "Demersal fish", "weight": 1}, {"arrows": "to", "from": "Cephalopodes", "label": "", "to": "Cephalopodes", "weight": 1}, {"arrows": "to", "from": "Cephalopodes", "label": "", "to": "Large pelagics", "weight": 1}, {"arrows": "to", "from": "Cephalopodes", "label": "", "to": "Large Zoo", "weight": 1}, {"arrows": "to", "from": "Cephalopodes", "label": "", "to": "Marine mammals", "weight": 1}, {"arrows": "to", "from": "Cephalopodes", "label": "", "to": "Merluccius", "weight": 1}, {"arrows": "to", "from": "Cephalopodes", "label": "", "to": "Polynemidae", "weight": 1}, {"arrows": "to", "from": "Cephalopodes", "label": "", "to": "Sciaenidae", "weight": 1}, {"arrows": "to", "from": "Cephalopodes", "label": "", "to": "Serranidae", "weight": 1}, {"arrows": "to", "from": "Marine mammals", "label": "", "to": "Cephalopodes", "weight": 1}, {"arrows": "to", "from": "Marine mammals", "label": "", "to": "Macrobenthos", "weight": 1}, {"arrows": "to", "from": "Marine mammals", "label": "", "to": "Marine birds", "weight": 1}, {"arrows": "to", "from": "Marine mammals", "label": "", "to": "Merluccius", "weight": 1}, {"arrows": "to", "from": "Marine mammals", "label": "", "to": "Parapenaeus longirostris", "weight": 1}, {"arrows": "to", "from": "Marine mammals", "label": "", "to": "Polynemidae", "weight": 1}, {"arrows": "to", "from": "Marine mammals", "label": "", "to": "Sciaenidae", "weight": 1}, {"arrows": "to", "from": "Marine mammals", "label": "", "to": "Small pelagics", "weight": 1}, {"arrows": "to", "from": "Demersal fish", "label": "", "to": "Large pelagics", "weight": 1}, {"arrows": "to", "from": "Demersal fish", "label": "", "to": "Large Zoo", "weight": 1}, {"arrows": "to", "from": "Demersal fish", "label": "", "to": "Sardinella", "weight": 1}, {"arrows": "to", "from": "Demersal fish", "label": "", "to": "Serranidae", "weight": 1}, {"arrows": "to", "from": "Large Zoo", "label": "", "to": "Demersal fish", "weight": 1}, {"arrows": "to", "from": "Large Zoo", "label": "", "to": "Miscelaneous", "weight": 1}, {"arrows": "to", "from": "Large Zoo", "label": "", "to": "Serranidae", "weight": 1}, {"arrows": "to", "from": "Macrobenthos", "label": "", "to": "Demersal fish", "weight": 1}, {"arrows": "to", "from": "Macrobenthos", "label": "", "to": "Large Zoo", "weight": 1}, {"arrows": "to", "from": "Macrobenthos", "label": "", "to": "Marine mammals", "weight": 1}, {"arrows": "to", "from": "Macrobenthos", "label": "", "to": "Miscelaneous", "weight": 1}, {"arrows": "to", "from": "Middlebenthos", "label": "", "to": "Demersal fish", "weight": 1}, {"arrows": "to", "from": "Middlebenthos", "label": "", "to": "Miscelaneous", "weight": 1}, {"arrows": "to", "from": "Miscelaneous", "label": "", "to": "Demersal fish", "weight": 1}, {"arrows": "to", "from": "Miscelaneous", "label": "", "to": "Large pelagics", "weight": 1}, {"arrows": "to", "from": "Miscelaneous", "label": "", "to": "Marine mammals", "weight": 1}, {"arrows": "to", "from": "Miscelaneous", "label": "", "to": "Miscelaneous", "weight": 1}, {"arrows": "to", "from": "Miscelaneous", "label": "", "to": "Serranidae", "weight": 1}, {"arrows": "to", "from": "Parapenaeus longirostris", "label": "", "to": "Demersal fish", "weight": 1}, {"arrows": "to", "from": "Penaeus", "label": "", "to": "Demersal fish", "weight": 1}, {"arrows": "to", "from": "Polynemidae", "label": "", "to": "Demersal fish", "weight": 1}, {"arrows": "to", "from": "Polynemidae", "label": "", "to": "Large Zoo", "weight": 1}, {"arrows": "to", "from": "Polynemidae", "label": "", "to": "Marine mammals", "weight": 1}, {"arrows": "to", "from": "Polynemidae", "label": "", "to": "Mesopelagics", "weight": 1}, {"arrows": "to", "from": "Polynemidae", "label": "", "to": "Middlebenthos", "weight": 1}, {"arrows": "to", "from": "Small Zoo", "label": "", "to": "Demersal fish", "weight": 1}, {"arrows": "to", "from": "Small Zoo", "label": "", "to": "Miscelaneous", "weight": 1}, {"arrows": "to", "from": "Dentex", "label": "", "to": "Large pelagics", "weight": 1}, {"arrows": "to", "from": "Dentex", "label": "", "to": "Large Zoo", "weight": 1}, {"arrows": "to", "from": "Dentex", "label": "", "to": "Marine mammals", "weight": 1}, {"arrows": "to", "from": "Dentex", "label": "", "to": "Merluccius", "weight": 1}, {"arrows": "to", "from": "Dentex", "label": "", "to": "Mesopelagics", "weight": 1}, {"arrows": "to", "from": "Dentex", "label": "", "to": "Sciaenidae", "weight": 1}, {"arrows": "to", "from": "Dentex", "label": "", "to": "Serranidae", "weight": 1}, {"arrows": "to", "from": "Haemulidae", "label": "", "to": "Large Zoo", "weight": 1}, {"arrows": "to", "from": "Haemulidae", "label": "", "to": "Marine mammals", "weight": 1}, {"arrows": "to", "from": "Haemulidae", "label": "", "to": "Polynemidae", "weight": 1}, {"arrows": "to", "from": "Haemulidae", "label": "", "to": "Sciaenidae", "weight": 1}, {"arrows": "to", "from": "Haemulidae", "label": "", "to": "Small pelagics", "weight": 1}, {"arrows": "to", "from": "Large pelagics", "label": "", "to": "Large pelagics", "weight": 1}, {"arrows": "to", "from": "Large pelagics", "label": "", "to": "Marine birds", "weight": 1}, {"arrows": "to", "from": "Large pelagics", "label": "", "to": "Merluccius", "weight": 1}, {"arrows": "to", "from": "Large pelagics", "label": "", "to": "Polynemidae", "weight": 1}, {"arrows": "to", "from": "Large pelagics", "label": "", "to": "Sciaenidae", "weight": 1}, {"arrows": "to", "from": "Large pelagics", "label": "", "to": "Serranidae", "weight": 1}, {"arrows": "to", "from": "Marine birds", "label": "", "to": "Large pelagics", "weight": 1}, {"arrows": "to", "from": "Marine birds", "label": "", "to": "Merluccius", "weight": 1}, {"arrows": "to", "from": "Marine birds", "label": "", "to": "Polynemidae", "weight": 1}, {"arrows": "to", "from": "Marine birds", "label": "", "to": "Sciaenidae", "weight": 1}, {"arrows": "to", "from": "Marine birds", "label": "", "to": "Serranidae", "weight": 1}, {"arrows": "to", "from": "Merluccius", "label": "", "to": "Large pelagics", "weight": 1}, {"arrows": "to", "from": "Merluccius", "label": "", "to": "Macrobenthos", "weight": 1}, {"arrows": "to", "from": "Merluccius", "label": "", "to": "Marine birds", "weight": 1}, {"arrows": "to", "from": "Merluccius", "label": "", "to": "Marine mammals", "weight": 1}, {"arrows": "to", "from": "Merluccius", "label": "", "to": "Polynemidae", "weight": 1}, {"arrows": "to", "from": "Merluccius", "label": "", "to": "Pseudotolithus", "weight": 1}, {"arrows": "to", "from": "Merluccius", "label": "", "to": "Sardinella", "weight": 1}, {"arrows": "to", "from": "Merluccius", "label": "", "to": "Sciaenidae", "weight": 1}, {"arrows": "to", "from": "Merluccius", "label": "", "to": "Serranidae", "weight": 1}, {"arrows": "to", "from": "Mesopelagics", "label": "", "to": "Large pelagics", "weight": 1}, {"arrows": "to", "from": "Mesopelagics", "label": "", "to": "Serranidae", "weight": 1}, {"arrows": "to", "from": "Sardinella", "label": "", "to": "Large pelagics", "weight": 1}, {"arrows": "to", "from": "Sardinella", "label": "", "to": "Large Zoo", "weight": 1}, {"arrows": "to", "from": "Sardinella", "label": "", "to": "Marine mammals", "weight": 1}, {"arrows": "to", "from": "Sardinella", "label": "", "to": "Miscelaneous", "weight": 1}, {"arrows": "to", "from": "Sardinella", "label": "", "to": "Serranidae", "weight": 1}, {"arrows": "to", "from": "Sciaenidae", "label": "", "to": "Large pelagics", "weight": 1}, {"arrows": "to", "from": "Sciaenidae", "label": "", "to": "Large Zoo", "weight": 1}, {"arrows": "to", "from": "Sciaenidae", "label": "", "to": "Marine mammals", "weight": 1}, {"arrows": "to", "from": "Sciaenidae", "label": "", "to": "Merluccius", "weight": 1}, {"arrows": "to", "from": "Sciaenidae", "label": "", "to": "Serranidae", "weight": 1}, {"arrows": "to", "from": "Small pelagics", "label": "", "to": "Large pelagics", "weight": 1}, {"arrows": "to", "from": "Small pelagics", "label": "", "to": "Miscelaneous", "weight": 1}, {"arrows": "to", "from": "Small pelagics", "label": "", "to": "Polynemidae", "weight": 1}, {"arrows": "to", "from": "Small pelagics", "label": "", "to": "Serranidae", "weight": 1}, {"arrows": "to", "from": "Trachurus", "label": "", "to": "Large pelagics", "weight": 1}, {"arrows": "to", "from": "Trachurus", "label": "", "to": "Marine mammals", "weight": 1}, {"arrows": "to", "from": "Trachurus", "label": "", "to": "Miscelaneous", "weight": 1}, {"arrows": "to", "from": "Trachurus", "label": "", "to": "Serranidae", "weight": 1}, {"arrows": "to", "from": "Serranidae", "label": "", "to": "Large Zoo", "weight": 1}, {"arrows": "to", "from": "Serranidae", "label": "", "to": "Marine mammals", "weight": 1}, {"arrows": "to", "from": "Serranidae", "label": "", "to": "Merluccius", "weight": 1}, {"arrows": "to", "from": "Serranidae", "label": "", "to": "Middlebenthos", "weight": 1}, {"arrows": "to", "from": "Serranidae", "label": "", "to": "Polynemidae", "weight": 1}, {"arrows": "to", "from": "Serranidae", "label": "", "to": "Pseudotolithus", "weight": 1}, {"arrows": "to", "from": "Serranidae", "label": "", "to": "Sciaenidae", "weight": 1}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
